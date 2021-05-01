@@ -208,7 +208,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=thum,
                 description=hmmkek,
                 text=okayz,
-                buttons=
+                buttons= [
                   [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
                   [Button.url("Grup MVPL", f"t.me/idmvpl")],
                   [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
