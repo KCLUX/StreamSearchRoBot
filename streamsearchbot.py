@@ -61,7 +61,12 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
                       [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
-                              ]
+                      [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                      [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                      
+                      ]
             )
         await event.answer([resultm])
         return
@@ -80,7 +85,14 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=okiknow,
                 description=sedme,
                 text=okayz,
-                buttons=Button.switch_inline("Cari lagi", query="torrent ", same_peer=True),
+                buttons=[
+                [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
+                [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                      
+                ]
             )
                                )
     else:
@@ -98,7 +110,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=okiknow,
                 description=sedme,
                 text=okayz,
-                buttons=[Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
+                buttons= [
+                  [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
+                  [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                  [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                  [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                  [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                  ]    
             ))
     await event.answer(results)
 
@@ -119,7 +137,11 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
                       [Button.switch_inline("Cari lagi", query="yt ", same_peer=True)],
-                              ]
+                      [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                      [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                             ]
             )
         await event.answer([resultm])
         return
@@ -137,7 +159,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=thum,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline("Cari lagi", query="yt ", same_peer=True),
+                buttons= [
+                [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
+                [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                ]
             )
                                )
     await event.answer(results)
@@ -158,6 +186,10 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
                       [Button.switch_inline("Cari lagi", query="yt ", same_peer=True)],
+                      [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                      [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
                               ]
             )
         await event.answer([resultm])
@@ -176,7 +208,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=thum,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline("Cari lagi", query="yt ", same_peer=True),
+                buttons=
+                  [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
+                  [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                  [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                  [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
+                  [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                  ]
             )
                                )
     await event.answer(results)
