@@ -192,7 +192,7 @@ async def inline_handler(event):
             resulte = builder.article(
                 title="Cara menggunakan",
                 description="© MVPL",
-                text=f"**Bagaimana cara menggunakannya?** \n**Youtube:** `@{firstname} yt <kata kunci>` \n**Contoh :** `@{firstname} yt lagu indonesia raya` \n\n**Torrent :** `@{firstname} torrent <kata kunci>` \n**Contoh :** `@{firstname} torrent the raid`",
+                text=f"**Bagaimana cara menggunakannya?** \n**👉 Youtube:**\n `@{firstname} yt <kata kunci>` \n**Contoh :** `@{firstname} yt lagu indonesia raya` \n\n👉 **MP3 Youtube:**\n `@{firstname} ytmp3 <kata kunci>` \n**Contoh :**\n `@{firstname} ytmp3 lagu indonesia raya` \n\n👉 **Torrent: **\n `@{firstname} torrent <kata kunci>` \n**Contoh :** `@{firstname} torrent the raid`",
                 buttons=[
                       [Button.url("Grup MVPL", f"t.me/idmvpl")],
                       [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
