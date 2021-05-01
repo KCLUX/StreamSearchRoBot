@@ -35,7 +35,7 @@ async def search(event):
                      )
 @torrentbot.on(events.NewMessage(pattern="^/mvpl$"))
 async def search(event):
-    await event.reply('**Saluran Kami:**\n👉 @movieplaylist (stream - off)\n👉 @newmvpl (raw&4k - on)\n👉 @idmvpl (groups gateway - on)\n👉 @mvplbackup (gdl - on)\n👉 @open_signup (pt open signup - on)\n👉 @mvplid (whatson - idle)', parse_mode="HTML")
+    await event.reply(' **Saluran Kami:** \n👉 @movieplaylist (stream - off)\n👉 @newmvpl (raw&4k - on)\n👉 @idmvpl (groups gateway - on)\n👉 @mvplbackup (gdl - on)\n👉 @open_signup (pt open signup - on)\n👉 @mvplid (whatson - idle)', parse_mode="HTML")
 
 @torrentbot.on(events.NewMessage(pattern="^/donasi$"))
 async def search(event):
