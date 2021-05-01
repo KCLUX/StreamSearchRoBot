@@ -24,9 +24,11 @@ torrentbot = bot.start(bot_token=Config.BOT_TOKEN)
 async def search(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
-    await event.reply(message=f"Hai, **{firstname}**, Selamat datang dan selamat menggunakan YtMagnet Search Bot.",
+    await event.reply(message=f"Hai, **{firstname}**, Selamat datang dan selamat menggunakan YtMagnet Search Bot untuk MirrorGroup.",
                       buttons=[
+                      [Button.url("Grup MVPL", f"t.me/idmvpl")],
                       [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari MP3 Youtube", query="yt ", same_peer=True)],
                       [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
                       
                               ]
@@ -35,7 +37,7 @@ async def search(event):
 async def search(event):
     await event.reply('**Saluran Kami:**\n👉 @movieplaylist (stream - off)\n👉 @newmvpl (raw&4k - on)\n👉 @idmvpl (groups gateway - on)\n👉 @mvplbackup (gdl - on)\n👉 @open_signup (pt open signup - on)\n👉 @mvplid (whatson - idle)', parse_mode="HTML")
 
-@torrentbot.on(events.NewMessage(pattern="^donasi$"))
+@torrentbot.on(events.NewMessage(pattern="^/donasi$"))
 async def search(event):
     await event.reply('Silahkan PM ke @memeriksausername', parse_mode="HTML")
     
@@ -72,7 +74,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
             starksize = okpro[i]["size"]
             starky = okpro[i]["type"]
             seeders = okpro[i]["seeder"]
-            okayz = (f"**Title :** `{okiknow}` \n**Size :** `{starksize}` \n**Type :** `{starky}` \n**Seeder :** `{seeders}` \n**Leecher :** `{okpros}` \n**Magnet :** `{sadstark}` ")
+            okayz = (f"/mirror {sadstark}")
             sedme = f"Size : {starksize} Type : {starky} Age : {seds}"
             results.append(await event.builder.article(
                 title=okiknow,
@@ -90,7 +92,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
             starksize = sedz["size"]
             starky = sedz["type"]
             seeders = sedz["seeder"]
-            okayz = (f"**Title :** `{okiknow}` \n**Size :** `{starksize}` \n**Type :** `{starky}` \n**Seeder :** `{seeders}` \n**Leecher :** `{okpros}` \n**Magnet :** `{sadstark}` ")
+            okayz = (f"/mirror {sadstark}")
             sedme = f"Size : {starksize} Type : {starky} Age : {seds}"
             results.append(await event.builder.article(
                 title=okiknow,
@@ -116,7 +118,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 description="Cek ejaan atau gunakan kata kunci lain",
                 text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
-                      [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari lagi", query="yt ", same_peer=True)],
                               ]
             )
         await event.answer([resultm])
@@ -129,45 +131,56 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         td = mio["duration"]
         tw = mio["views"]
         kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
-        okayz = (f"**Title :** `{thum}` \n**Link :** `{mo}` \n**Channel :** `{thums}` \n**Views :** `{tw}` \n**Duration :** `{td}`")
+        okayz = (f"/watch {mo}")
         hmmkek = f'Channel : {thums} \nDuration : {td} \nViews : {tw}'
         results.append(await event.builder.article(
                 title=thum,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline("Search Again", query="yt ", same_peer=True),
+                buttons=Button.switch_inline("Cari lagi", query="yt ", same_peer=True),
             )
                                )
     await event.answer(results)
 
-@torrentbot.on(events.InlineQuery(pattern=r"jm (.*)"))
+@torrentbot.on(events.InlineQuery(pattern=r"ytmp3 (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
     testinput = event.pattern_match.group(1)
     starkisnub = urllib.parse.quote_plus(testinput)
     results = []
-    search = f"http://starkmusic.herokuapp.com/result/?query={starkisnub}"
-    seds = requests.get(url=search).json()
-    for okz in seds:
-        fine = okz['album']
-        okmusic = okz['music']
-        hmmstar = okz['perma_url']
-        singer = okz['singers']
-        hmm = okz['duration']
-        langs = okz['language']
-        hidden_url = okz['media_url']
-        okayz = (f"**Song Name :** `{okmusic}` \n**Singer :** `{singer}` \n**Song Url :** `{hmmstar}`"
-                 f"\n**Language :** `{langs}` \n**Download Able Url :** `{hidden_url}`"
-                 f"\n**Duration :** `{hmm}`")
-        hmmkek = f'Song : {okmusic} Singer : {singer} Duration : {hmm} \nLanguage : {langs}'
+    search = SearchVideos(f"{testinput}", offset=1, mode="dict", max_results=20)
+    mi = search.result()
+    moi = mi["search_result"]
+    if search == None:
+        resultm = builder.article(
+        		title="Tidak menemukan apapun",
+                description="Cek ejaan atau gunakan kata kunci lain",
+                text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
+                buttons=[
+                      [Button.switch_inline("Cari lagi", query="yt ", same_peer=True)],
+                              ]
+            )
+        await event.answer([resultm])
+        return
+    for mio in moi:
+        mo = mio["link"]
+        thum = mio["title"]
+        fridayz = mio["id"]
+        thums = mio["channel"]
+        td = mio["duration"]
+        tw = mio["views"]
+        kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
+        okayz = (f"/watch {mo} audio")
+        hmmkek = f'Channel : {thums} \nDuration : {td} \nViews : {tw}'
         results.append(await event.builder.article(
-                title=okmusic,
+                title=thum,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline("Search Again", query="jm ", same_peer=True),
+                buttons=Button.switch_inline("Cari lagi", query="yt ", same_peer=True),
             )
                                )
     await event.answer(results)
+ 
     
 @torrentbot.on(events.InlineQuery)  # pylint:disable=E0602
 async def inline_handler(event):
@@ -182,13 +195,14 @@ async def inline_handler(event):
                 text=f"**Bagaimana cara menggunakannya?** \n**Youtube:** `@{firstname} yt <kata kunci>` \n**Contoh :** `@{firstname} yt lagu indonesia raya` \n\n**Torrent :** `@{firstname} torrent <kata kunci>` \n**Contoh :** `@{firstname} torrent the raid`",
                 buttons=[
                       [Button.url("Grup MVPL", f"t.me/idmvpl")],
-                      [Button.switch_inline("Cari Youtube", query="yt ", same_peer=True)],
-                      [Button.switch_inline("Cari Torrent", query="torrent ", same_peer=True)]
+                      [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari MP3 Youtube", query="ytmp3 ", same_peer=True)],
+                      [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)]
                 ]
                              
             )
             await event.answer([resulte])
-print("Your Stream Search Bot is Alive. Thank You !")
+print("Bot berfungsi!")
 def startbot():
     torrentbot.run_until_disconnected()
 
