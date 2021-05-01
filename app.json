@@ -9,9 +9,9 @@
     "telegram-bot",
     "productivity"
   ],
-  "repository": "https://github.com/StarkGang/StreamSearchRoBot",
-  "website": "starkgang.ml",
-  "success_url": "t.me/FridayOT",
+  "repository": "https://github.com/KCLUX/StreamSearchRoBot",
+  "website": "github.com/KCLUC",
+  "success_url": "github.com/KCLUX",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -27,11 +27,11 @@
     },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
+      "value": "1305269"
     },
     "API_HASH": {
       "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
+      "value": "44d2d67eb25eca2f7c12784db5972bdd"
     }
   },
   "buildpacks": [
