@@ -24,17 +24,22 @@ torrentbot = bot.start(bot_token=Config.BOT_TOKEN)
 async def search(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
-    await event.reply(message=f"**Hello, {firstname}, I Am Inline Stream Search Bot.** \n**Using Me You Can Fetch Torrent Magnet, Youtube Videos Link, Jio Saavan Music Links** \n**(C) @STARKGANG**",
+    await event.reply(message=f"Hai, **{firstname}**, Selamat datang dan selamat menggunakan YtMagnet Search Bot.",
                       buttons=[
-                      [Button.switch_inline("Search Youtube", query="yt ", same_peer=True)],
-                      [Button.switch_inline("Search Torrent", query="torrent ", same_peer=True)],
-                      [Button.switch_inline("Search JioMusic", query="jm ", same_peer=True)],
+                      [Button.switch_inline("Cari Video Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari Magnet Torrent", query="torrent ", same_peer=True)],
+                      
                               ]
                      )
-@torrentbot.on(events.NewMessage(pattern="^/repo$"))
+@torrentbot.on(events.NewMessage(pattern="^/mvpl$"))
 async def search(event):
-    await event.reply('<b><u>Here is My Repo</b></u> <code>https://github.com/StarkGang/StreamSearchRoBot</code>', parse_mode="HTML")
+    await event.reply('**Saluran Kami:**\n👉 @movieplaylist (stream - off)\n👉 @newmvpl (raw&4k - on)\n👉 @idmvpl (groups gateway - on)\n👉 @mvplbackup (gdl - on)\n👉 @open_signup (pt open signup - on)\n👉 @mvplid (whatson - idle)', parse_mode="HTML")
 
+@torrentbot.on(events.NewMessage(pattern="^donasi$"))
+async def search(event):
+    await event.reply('Silahkan PM ke @memeriksausername', parse_mode="HTML")
+    
+    
 @torrentbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
@@ -49,11 +54,11 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     sed = len(okpro)
     if sed == 0:
         resultm = builder.article(
-                title="No Results Found.",
-                description="Check Your Spelling / Keyword",
-                text="**Please, Search Again With Correct Keyword, Thank you !**",
+                title="Tidak menemukan apapun",
+                description="Cek ejaan atau gunakan kata kunci lain",
+                text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
-                      [Button.switch_inline("Search Again", query="torrent ", same_peer=True)],
+                      [Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
                               ]
             )
         await event.answer([resultm])
@@ -73,7 +78,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=okiknow,
                 description=sedme,
                 text=okayz,
-                buttons=Button.switch_inline("Search Again", query="torrent ", same_peer=True),
+                buttons=Button.switch_inline("Cari lagi", query="torrent ", same_peer=True),
             )
                                )
     else:
@@ -91,7 +96,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 title=okiknow,
                 description=sedme,
                 text=okayz,
-                buttons=[Button.switch_inline("Search Again", query="torrent ", same_peer=True)],
+                buttons=[Button.switch_inline("Cari lagi", query="torrent ", same_peer=True)],
             ))
     await event.answer(results)
 
@@ -107,9 +112,9 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     moi = mi["search_result"]
     if search == None:
         resultm = builder.article(
-                title="No Results Found.",
-                description="Check Your Spelling / Keyword",
-                text="**Please, Search Again With Correct Keyword, Thank you !**",
+        		title="Tidak menemukan apapun",
+                description="Cek ejaan atau gunakan kata kunci lain",
+                text="**Silahkan dicoba lagi dengan kata kunci yang tepat**",
                 buttons=[
                       [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
                               ]
@@ -172,14 +177,13 @@ async def inline_handler(event):
         firstname = replied_user.username
         if query == None or " ": 
             resulte = builder.article(
-                title="Usage Guide.",
-                description="(C) @StarkGanG",
-                text=f"**How To Use Me?** \n**Youtube :** `@{firstname} yt <query>` \n**Example :** `@{firstname} yt why we lose song` \n\n**Torrent :** `@{firstname} torrent <query>` \n**Example :** `@{firstname} torrent avengers endgame ` \n\n**JioSaavan :** `@{firstname} jm <query>` \n**Example :** `@{firstname} jm dilbaar`",
+                title="Cara menggunakan",
+                description="© MVPL",
+                text=f"**Bagaimana cara menggunakannya?** \n**Youtube:** `@{firstname} yt <kata kunci>` \n**Contoh :** `@{firstname} yt lagu indonesia raya` \n\n**Torrent :** `@{firstname} torrent <kata kunci>` \n**Contoh :** `@{firstname} torrent the raid`",
                 buttons=[
-                      [Button.url("Contact Me", f"t.me/{firstname}")],
-                      [Button.switch_inline("Search Youtube", query="yt ", same_peer=True)],
-                      [Button.switch_inline("Search Torrent", query="torrent ", same_peer=True)],
-                      [Button.switch_inline("Search JioSaavn", query="jm ", same_peer=True)],
+                      [Button.url("Grup MVPL", f"t.me/idmvpl")],
+                      [Button.switch_inline("Cari Youtube", query="yt ", same_peer=True)],
+                      [Button.switch_inline("Cari Torrent", query="torrent ", same_peer=True)]
                 ]
                              
             )
